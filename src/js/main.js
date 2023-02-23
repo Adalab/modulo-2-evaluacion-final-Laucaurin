@@ -14,6 +14,12 @@ let listCocktails = [];
 let listCocktailsfavs = [];
 
 
+const getLocalStored = JSON.parse(localStorage.getItem("drinksFav"));
+if (getLocalStored) {
+    listCocktailsfavs = getLocalStored;
+    renderFavoriteList(listCocktailsfavs);
+}
+
 //fech Elementos por defecto
 fetch(urlMargarita)
     .then((response) => response.json())
@@ -45,8 +51,6 @@ function handleClickSearch(ev) {
 
 
             renderDrinkList(filteredList);
-            //localstorage("nombre-guardar", que-voy-guardar)
-            localStorage.setItem("ElementsDrinks", JSON.stringify(listCocktails));
         });
 }
 
@@ -67,6 +71,7 @@ function renderFavoriteList(listCocktailsfavs) {
         listElementsfav.innerHTML += renderDrink(drink);
     }
     addEventToElement();
+    localStorage.setItem("drinksFav", JSON.stringify(listCocktailsfavs));
 }
 
 
@@ -75,7 +80,7 @@ function renderDrink(drink) {
     let html = `<li class="js-li-element" id=${drink.idDrink}>
         <article >
         <h3>${drink.strDrink}</h3>
-        <img class="img" src=${drink.strDrinkThumb} alt ="Foto bebida"/>
+        <img class="img" src=${drink.strDrinkThumb} || https://images.pexels.com/photos/3323682/pexels-photo-3323682.jpeg?auto=compress&cs=tinysrgb&w=600 alt ="drink photo"/>
     </article> 
     </li> `;
     return html;
