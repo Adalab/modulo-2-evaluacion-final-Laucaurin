@@ -6,6 +6,8 @@ const btnSearch = document.querySelector('.js__btn_search');
 const urlMargarita = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita';
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 const listElements = document.querySelector('.js__list_elements');
+const listElementsfav = document.querySelector('.js__list_fav');
+
 
 let listCocktails = [];
 let listCocktailsfavs = [];
@@ -21,29 +23,49 @@ fetch(urlMargarita)
         //     nameDrink: drinks.strDrink,
         //     img: drinks.strDrinkThumb,
         // }));
-        console.log(listCocktails);
         renderDrinkList(listCocktails);
 
+
     });
+
+
 
 // Fetch elementos por buscador
 function handleClickSearch(ev) {
     ev.preventDefault();
+    listElements.innerHTML = '';
     const inputValue = formInput.value;
     fetch(url + inputValue)
         .then((response) => response.json())
         .then((data) => {
-            renderDrinkList(listCocktails);
+            listCocktails = data.drinks;
+
+            const filteredList = listCocktails.filter(drink => drink.strDrink.toLowerCase().includes(inputValue.toLowerCase()));
+            console.log(filteredList);
+
+
+            renderDrinkList(filteredList);
+            //localstorage("nombre-guardar", que-voy-guardar)
+            localStorage.setItem("ElementsDrinks", JSON.stringify(listCocktails));
         });
 }
 
 
-//Pinta todos los li a
+//Pinta todos los li a la lista
 function renderDrinkList(listCocktails) {
+    listElements.innerHTML = '';
     for (const drink of listCocktails) {
         listElements.innerHTML += renderDrink(drink);
     }
     addEventToElement();
+}
+
+//Pinta todos los li a la lista de favs
+function renderFavoriteList(listCocktailsfavs) {
+    listElementsfav.innerHTML = "";
+    for (const drink of listCocktailsfavs) {
+        listElementsfav.innerHTML += renderDrink(drink);
+    }
 }
 
 
@@ -63,6 +85,27 @@ function handleClickElement(ev) {
     console.log(ev.currentTarget.id);
 
     ev.currentTarget.classList.toggle('selected');
+    const idSelected = ev.currentTarget.id;
+
+
+    //find : devuelve el primer elemento que cumpla una condición 
+    const selectedDrink = listCocktails.find(drink => drink.id === idSelected);
+    console.log(selectedDrink)
+
+    // //findeIndex: la posición donde está el elemento, o -1 sino está en el listado
+    // const indexDrink = listCocktailsfavs.findIndex(drink => drink.id === idSelected);
+
+    // //Comprobar si ya existe el favorite
+
+    // if (indexDrink === -1) { //no está en el listado de favoritos
+    //     //La guardo en el listado de favoritos: push
+    //     listCocktailsfavs.push(selectedDrink);
+    // } else { //si está en el listado de favoritos eliminarlo
+    //     //splice: elimina un elemento a partir de una posición
+    //     listCocktailsfavs.splice(indexDrink, 1);
+    // }
+    // //Pintar en el listado HTML de favoritos:
+    // renderFavoriteList(listCocktailsfavs);
 }
 
 
