@@ -25,7 +25,6 @@ fetch(urlMargarita)
         // }));
         renderDrinkList(listCocktails);
 
-
     });
 
 
@@ -62,17 +61,18 @@ function renderDrinkList(listCocktails) {
 
 //Pinta todos los li a la lista de favs
 function renderFavoriteList(listCocktailsfavs) {
-    listElementsfav.innerHTML = "";
+    listElementsfav.innerHTML = '';
     for (const drink of listCocktailsfavs) {
         listElementsfav.innerHTML += renderDrink(drink);
     }
+    addEventToElement();
 }
 
 
 //Pintar un elemento li
 function renderDrink(drink) {
-    let html = `<li id=${drink.idDrink}>
-        <article class="js-li-element">
+    let html = `<li class="js-li-element" id=${drink.idDrink}>
+        <article >
         <h3>${drink.strDrink}</h3>
         <img class="img" src=${drink.strDrinkThumb} alt ="Foto bebida"/>
     </article> 
@@ -82,30 +82,22 @@ function renderDrink(drink) {
 
 //funcion que recoge el id del elemento en el click del evento de la función addEventToElement
 function handleClickElement(ev) {
-    console.log(ev.currentTarget.id);
-
     ev.currentTarget.classList.toggle('selected');
-    const idSelected = ev.currentTarget.id;
+    const selectId = ev.currentTarget.id;
+    const selectedDrink = listCocktails.find(drink => drink.idDrink === selectId);
+    const indexDrink = listCocktailsfavs.findIndex(drink => drink.idDrink === selectId);
 
+    if (indexDrink === -1) { //no está en el listado de favoritos
+        //La guardo en el listado de favoritos: push
+        listCocktailsfavs.push(selectedDrink);
+    } else { //si está en el listado de favoritos eliminarlo
+        //splice: elimina un elemento a partir de una posición
+        listCocktailsfavs.splice(indexDrink, 1);
+    }
 
-    //find : devuelve el primer elemento que cumpla una condición 
-    const selectedDrink = listCocktails.find(drink => drink.id === idSelected);
-    console.log(selectedDrink)
+    // listCocktailsfavs.push(selectedDrink);
+    renderFavoriteList(listCocktailsfavs);
 
-    // //findeIndex: la posición donde está el elemento, o -1 sino está en el listado
-    // const indexDrink = listCocktailsfavs.findIndex(drink => drink.id === idSelected);
-
-    // //Comprobar si ya existe el favorite
-
-    // if (indexDrink === -1) { //no está en el listado de favoritos
-    //     //La guardo en el listado de favoritos: push
-    //     listCocktailsfavs.push(selectedDrink);
-    // } else { //si está en el listado de favoritos eliminarlo
-    //     //splice: elimina un elemento a partir de una posición
-    //     listCocktailsfavs.splice(indexDrink, 1);
-    // }
-    // //Pintar en el listado HTML de favoritos:
-    // renderFavoriteList(listCocktailsfavs);
 }
 
 
