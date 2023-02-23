@@ -3,6 +3,7 @@
 //variables
 const formInput = document.querySelector('.js__form_input');
 const btnSearch = document.querySelector('.js__btn_search');
+const btnReset = document.querySelector('.js__btn_reset');
 const urlMargarita = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita';
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 const listElements = document.querySelector('.js__list_elements');
@@ -87,15 +88,11 @@ function handleClickElement(ev) {
     const selectedDrink = listCocktails.find(drink => drink.idDrink === selectId);
     const indexDrink = listCocktailsfavs.findIndex(drink => drink.idDrink === selectId);
 
-    if (indexDrink === -1) { //no está en el listado de favoritos
-        //La guardo en el listado de favoritos: push
+    if (indexDrink === -1) {
         listCocktailsfavs.push(selectedDrink);
-    } else { //si está en el listado de favoritos eliminarlo
-        //splice: elimina un elemento a partir de una posición
+    } else {
         listCocktailsfavs.splice(indexDrink, 1);
     }
-
-    // listCocktailsfavs.push(selectedDrink);
     renderFavoriteList(listCocktailsfavs);
 
 }
@@ -109,6 +106,19 @@ function addEventToElement() {
     }
 }
 
+//function reset
+function handleClickReset(ev) {
+    ev.preventDefault();
+    console.log('holi')
+    listElements.innerHTML = '';
+    listElementsfav.innerHTML = '';
+    formInput.value = '';
+
+}
+
 
 //Evento botón buscar
 btnSearch.addEventListener('click', handleClickSearch);
+
+//Evento reset
+btnReset.addEventListener('click', handleClickReset);
