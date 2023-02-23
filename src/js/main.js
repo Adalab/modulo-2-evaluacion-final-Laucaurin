@@ -1,81 +1,84 @@
 'use strict';
 
-//variables
+// Variables
 const formInput = document.querySelector('.js__form_input');
 const btnSearch = document.querySelector('.js__btn_search');
 const btnReset = document.querySelector('.js__btn_reset');
 const urlMargarita = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita';
-const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
-const listElements = document.querySelector('.js__list_elements');
-const listElementsfav = document.querySelector('.js__list_fav');
+const urlGlobal = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+const listCocktails = document.querySelector('.js__list_elements');
+const listCocktailsfav = document.querySelector('.js__list_fav');
 
+let dataListCocktails = [];
+let dataListCocktailsfavs = [];
 
-let listCocktails = [];
-let listCocktailsfavs = [];
-
-
-const getLocalStored = JSON.parse(localStorage.getItem("drinksFav"));
+// Local storage
+/*const getLocalStored = JSON.parse(localStorage.getItem("drinksDefault"));
 if (getLocalStored) {
-    listCocktailsfavs = getLocalStored;
-    renderFavoriteList(listCocktailsfavs);
+    dataListCocktails = getLocalStored;
+    renderList(dataListCocktails);
+}*/
+const localStorageFav = JSON.parse(localStorage.getItem('cocktailsFav'));
+if (localStorageFav) {
+    dataListCocktailsfavs = localStorageFav;
+    renderFavoriteList(dataListCocktailsfavs);
 }
 
-//fech Elementos por defecto
+
+// Fetch items by default
 fetch(urlMargarita)
     .then((response) => response.json())
     .then((data) => {
-        listCocktails = data.drinks;
+        dataListCocktails = data.drinks;
         // .map((drinks) => ({
         //     idDrink: drinks.idDrink,
         //     nameDrink: drinks.strDrink,
         //     img: drinks.strDrinkThumb,
         // }));
-        renderDrinkList(listCocktails);
+        renderList(dataListCocktails);
+        // localStorage.setItem("drinksDefault", JSON.stringify(dataListCocktails));
 
     });
 
 
 
-// Fetch elementos por buscador
+// Fetch elements by search
 function handleClickSearch(ev) {
     ev.preventDefault();
-    listElements.innerHTML = '';
+    listCocktails.innerHTML = '';
     const inputValue = formInput.value;
-    fetch(url + inputValue)
+    fetch(urlGlobal + inputValue)
         .then((response) => response.json())
         .then((data) => {
-            listCocktails = data.drinks;
-
-            const filteredList = listCocktails.filter(drink => drink.strDrink.toLowerCase().includes(inputValue.toLowerCase()));
+            dataListCocktails = data.drinks;
+            const filteredList = dataListCocktails.filter(drink => drink.strDrink.toLowerCase().includes(inputValue.toLowerCase()));
             console.log(filteredList);
-
-
-            renderDrinkList(filteredList);
+            renderList(filteredList);
         });
 }
 
 
-//Pinta todos los li a la lista
-function renderDrinkList(listCocktails) {
-    listElements.innerHTML = '';
-    for (const drink of listCocktails) {
-        listElements.innerHTML += renderDrink(drink);
+// Render all elements to list
+function renderList(dataListCocktails) {
+    listCocktails.innerHTML = '';
+    for (const drink of dataListCocktails) {
+        listCocktails.innerHTML += renderDrink(drink);
     }
     addEventToElement();
 }
 
-//Pinta todos los li a la lista de favs
-function renderFavoriteList(listCocktailsfavs) {
-    listElementsfav.innerHTML = '';
-    for (const drink of listCocktailsfavs) {
-        listElementsfav.innerHTML += renderDrink(drink);
+// Render all elements to favorite list
+function renderFavoriteList(dataListCocktailsfavs) {
+    listCocktailsfav.innerHTML = '';
+    for (const drink of dataListCocktailsfavs) {
+        listCocktailsfav.innerHTML += renderDrink(drink);
     }
     addEventToElement();
-    localStorage.setItem("drinksFav", JSON.stringify(listCocktailsfavs));
+    localStorage.setItem('cocktailsFav', JSON.stringify(dataListCocktailsfavs));
 }
 
 
-//Pintar un elemento li
+// Render an element
 function renderDrink(drink) {
     let html = `<li class="js-li-element" id=${drink.idDrink}>
         <article >
@@ -86,24 +89,23 @@ function renderDrink(drink) {
     return html;
 }
 
-//funcion que recoge el id del elemento en el click del evento de la función addEventToElement
+// Function that obtains the id of the element in the click event of the addEventToElement function
 function handleClickElement(ev) {
     ev.currentTarget.classList.toggle('selected');
     const selectId = ev.currentTarget.id;
-    const selectedDrink = listCocktails.find(drink => drink.idDrink === selectId);
-    const indexDrink = listCocktailsfavs.findIndex(drink => drink.idDrink === selectId);
+    const selectedDrink = dataListCocktails.find(drink => drink.idDrink === selectId);
+    const indexDrink = dataListCocktailsfavs.findIndex(drink => drink.idDrink === selectId);
 
     if (indexDrink === -1) {
-        listCocktailsfavs.push(selectedDrink);
+        dataListCocktailsfavs.push(selectedDrink);
     } else {
-        listCocktailsfavs.splice(indexDrink, 1);
+        dataListCocktailsfavs.splice(indexDrink, 1);
     }
-    renderFavoriteList(listCocktailsfavs);
-
+    renderFavoriteList(dataListCocktailsfavs);
 }
 
 
-//Escuchar evento sobre cada elemento
+// Listen event on each element
 function addEventToElement() {
     const liElementsList = document.querySelectorAll('.js-li-element');
     for (const li of liElementsList) {
@@ -111,19 +113,18 @@ function addEventToElement() {
     }
 }
 
-//function reset
+// Reset function
 function handleClickReset(ev) {
     ev.preventDefault();
-    console.log('holi')
-    listElements.innerHTML = '';
-    listElementsfav.innerHTML = '';
+    listCocktails.innerHTML = '';
+    listCocktailsfav.innerHTML = '';
     formInput.value = '';
-
+    localStorage.removeItem('cocktailsFav');
 }
 
 
-//Evento botón buscar
+// Search button event
 btnSearch.addEventListener('click', handleClickSearch);
 
-//Evento reset
+// Reset button event
 btnReset.addEventListener('click', handleClickReset);
