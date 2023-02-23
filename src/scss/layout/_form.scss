@@ -1,0 +1,29 @@
+.container__form {
+    background-color: $cuatro;
+    padding: 40px 0;
+}
+
+.form {
+    border: solid 2px #b2a89e;
+    text-align: center;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    margin:  auto;
+
+    &__label{
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    &__input {
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 10px;
+    }
+}
+
+.button {
+    width: 100px;
+}
