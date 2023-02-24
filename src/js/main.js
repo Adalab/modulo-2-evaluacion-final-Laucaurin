@@ -13,50 +13,34 @@ let dataListCocktails = [];
 let dataListCocktailsfavs = [];
 
 // Local storage
-/*const getLocalStored = JSON.parse(localStorage.getItem("drinksDefault"));
-if (getLocalStored) {
-    dataListCocktails = getLocalStored;
-    renderList(dataListCocktails);
-}*/
 const localStorageFav = JSON.parse(localStorage.getItem('cocktailsFav'));
 if (localStorageFav) {
     dataListCocktailsfavs = localStorageFav;
     renderFavoriteList(dataListCocktailsfavs);
 }
 
+// Fetch
+function getElements(urlPage) {
+    fetch(urlPage)
+        .then((response) => response.json())
+        .then((data) => {
+            dataListCocktails = data.drinks.map((drinks) => ({
+                idDrink: drinks.idDrink,
+                nameDrink: drinks.strDrink,
+                img: drinks.strDrinkThumb,
+            }));
+            renderList(dataListCocktails);
+        });
+}
+getElements(urlMargarita);
 
-// Fetch items by default
-fetch(urlMargarita)
-    .then((response) => response.json())
-    .then((data) => {
-        dataListCocktails = data.drinks;
-        // .map((drinks) => ({
-        //     idDrink: drinks.idDrink,
-        //     nameDrink: drinks.strDrink,
-        //     img: drinks.strDrinkThumb,
-        // }));
-        renderList(dataListCocktails);
-        // localStorage.setItem("drinksDefault", JSON.stringify(dataListCocktails));
-
-    });
-
-
-
-// Fetch elements by search
+// function + fetch event search
 function handleClickSearch(ev) {
     ev.preventDefault();
     listCocktails.innerHTML = '';
     const inputValue = formInput.value;
-    fetch(urlGlobal + inputValue)
-        .then((response) => response.json())
-        .then((data) => {
-            dataListCocktails = data.drinks;
-            const filteredList = dataListCocktails.filter(drink => drink.strDrink.toLowerCase().includes(inputValue.toLowerCase()));
-            console.log(filteredList);
-            renderList(filteredList);
-        });
+    getElements(urlGlobal + inputValue);
 }
-
 
 // Render all elements to list
 function renderList(dataListCocktails) {
@@ -71,7 +55,7 @@ function renderList(dataListCocktails) {
 function renderFavoriteList(dataListCocktailsfavs) {
     listCocktailsfav.innerHTML = '';
     for (const drink of dataListCocktailsfavs) {
-        listCocktailsfav.innerHTML += renderDrink(drink);
+        listCocktailsfav.innerHTML += renderDrinkFav(drink);
     }
     addEventToElement();
     localStorage.setItem('cocktailsFav', JSON.stringify(dataListCocktailsfavs));
@@ -79,27 +63,74 @@ function renderFavoriteList(dataListCocktailsfavs) {
 
 
 // Render an element
+
+
 function renderDrink(drink) {
+    // const searchFav = dataListCocktailsfavs.findIndex(drink => drink.idDrink);
     let html = `<li class="js-li-element" id=${drink.idDrink}>
-        <article >
-        <h3>${drink.strDrink}</h3>
-        <img class="img" src=${drink.strDrinkThumb} || https://images.pexels.com/photos/3323682/pexels-photo-3323682.jpeg?auto=compress&cs=tinysrgb&w=600 alt ="drink photo"/>
-    </article> 
-    </li> `;
+     <article >
+     <h3>${drink.nameDrink}</h3>
+         <img class="img" src=${drink.img} || https://images.pexels.com/photos/3323682/pexels-photo-3323682.jpeg?auto=compress&cs=tinysrgb&w=600 alt ="drink photo"/>
+     </article>
+     </li> `;
+    return html;
+
+}
+
+//Render an element fav
+function renderDrinkFav(drink) {
+    let html = `<li class="js-li-fav" id=${drink.idDrink}>
+     <article >
+     <h3>${drink.nameDrink}</h3>
+         <img class="img" src=${drink.img} || https://images.pexels.com/photos/3323682/pexels-photo-3323682.jpeg?auto=compress&cs=tinysrgb&w=600 alt ="drink photo"/>
+     </article>
+     </li> `;
     return html;
 }
 
+function renderDrink(drink) {
+    // const searchFav = dataListCocktailsfavs.findIndex(drink => drink.idDrink);
+    let html = `<li class="js-li-element" id=${drink.idDrink}>
+     <article >
+     <h3>${drink.nameDrink}</h3>
+         <img class="img" src=${drink.img} || https://images.pexels.com/photos/3323682/pexels-photo-3323682.jpeg?auto=compress&cs=tinysrgb&w=600 alt ="drink photo"/>
+     </article>
+     </li> `;
+    return html;
+
+}
+
+/*
+const liElement = document.createElement('li');
+ liElement.setAttribute("class", 'js-li-element');
+ liElement.setAttribute("id", `${drink.idDrink}`);
+ const artElement = document.createElement('article');
+ const h3Element = document.createElement('h3');
+ const h3Content = document.createTextNode(`${drink.strDrink}`);
+ const imgElement = document.createElement('img');
+ imgElement.setAttribute("src", `${drink.strDrinkThumb}`);
+ imgElement.setAttribute("class", "img");
+ imgElement.setAttribute("alt", "img drink");
+
+ h3Element.appendChild(h3Content);
+ artElement.append(h3Element, imgElement);
+ liElement.appendChild(artElement);
+return liElement*/
+
+
 // Function that obtains the id of the element in the click event of the addEventToElement function
 function handleClickElement(ev) {
-    ev.currentTarget.classList.toggle('selected');
+
     const selectId = ev.currentTarget.id;
     const selectedDrink = dataListCocktails.find(drink => drink.idDrink === selectId);
     const indexDrink = dataListCocktailsfavs.findIndex(drink => drink.idDrink === selectId);
-
     if (indexDrink === -1) {
         dataListCocktailsfavs.push(selectedDrink);
+        ev.currentTarget.classList.add('selected');
     } else {
+
         dataListCocktailsfavs.splice(indexDrink, 1);
+        ev.currentTarget.classList.remove('selected');
     }
     renderFavoriteList(dataListCocktailsfavs);
 }
@@ -116,12 +147,9 @@ function addEventToElement() {
 // Reset function
 function handleClickReset(ev) {
     ev.preventDefault();
-    listCocktails.innerHTML = '';
-    listCocktailsfav.innerHTML = '';
+    getElements(urlMargarita);
     formInput.value = '';
-    localStorage.removeItem('cocktailsFav');
 }
-
 
 // Search button event
 btnSearch.addEventListener('click', handleClickSearch);
