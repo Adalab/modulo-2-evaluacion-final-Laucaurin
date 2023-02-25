@@ -1,5 +1,16 @@
 'use strict';
 
+// Fetch info global + handler function btn search
+function handleSearchBtn(event) {
+    event.preventDefault();
+    if (searchInput.value === '') {
+        labelMnsError.innerHTML = "This field is required";
+        getInfoApi(urlMargarita);
+    } else {
+        getInfoApi(urlGlobal + searchInput.value);
+    }
+}
+
 // Handler function li listener event
 function handleClickList(event) {
     event.preventDefault();

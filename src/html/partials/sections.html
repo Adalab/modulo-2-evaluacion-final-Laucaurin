@@ -4,8 +4,20 @@
         <ul class="js__cocktail_list section__list_ul"></ul>
     </section>
     <section class="section__fav">
-        <h2 class="section__fav_title">Favorites</h2>
-        <button class="js__btn_clear_all btn__clearAll">Delete Favorites</button>
-        <ul class=" js__fav_list section__list_ul section__fav_ul"></ul>
+        <div class="section__fav_wrap_title">
+            <h2 class="section__fav_title">Favorites</h2>
+            <button class="js__btn_clear_all btn__clearAll">Delete Favorites</button>
+        </div>
+        <div class="section__fav_wrap_form">
+            <form class="form" action="">
+                <label class="form__label" for="">Find your cocktail</label>
+                <input class="js__search_input form__input" type="text" placeholder="Margarita">
+                <label class="error js__label_error"></label>
+                <button class="js__search_button form__btn">Search</button>
+                <button class="js__reset_button form__btn">Reset</button>
+            </form>
+
+            <ul class=" js__fav_list section__list_ul section__fav_ul"></ul>
+        </div>
     </section>
 </main>
