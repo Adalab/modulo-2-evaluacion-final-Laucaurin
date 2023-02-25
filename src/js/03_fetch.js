@@ -20,8 +20,16 @@ getInfoApi(urlMargarita);
 // Fetch info global
 function handleSearchBtn(event) {
     event.preventDefault();
-    getInfoApi(urlGlobal + searchInput.value);
+
+    if (searchInput.value === '') {
+        labelMnsError.innerHTML = "This field is required";
+        getInfoApi(urlMargarita);
+    } else {
+        getInfoApi(urlGlobal + searchInput.value);
+    }
+
 }
+
 
 //Function to check if an empty img arrives and paint it
 function emptyImg(data) {

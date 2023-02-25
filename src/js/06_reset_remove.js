@@ -6,8 +6,8 @@ function handleResetBtn(event) {
     cocktailList.innerHTML = '';
     searchInput.value = '';
     getInfoApi(urlMargarita);
-
     renderFavoriteList();
+    labelMnsError.innerHTML = "";
 }
 // Handler function to delete all favs
 function handleClickBtnClearAllFav(ev) {
