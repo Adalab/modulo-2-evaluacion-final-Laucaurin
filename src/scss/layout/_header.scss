@@ -1,9 +1,19 @@
-.header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 35px;
-    padding: 5px 30px;
-    
-}
+.header {
 
+    background: url(../images/1.jpg);
+    background-position: right 5% bottom 70%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 300px;
+
+
+    &__title {
+        color: #f6f3ef;
+        padding-top: 30px;
+        padding-left: 30px;
+        font-family: 'Montserrat',
+            sans-serif;
+        font-size: 40px;
+    }
+
+}
