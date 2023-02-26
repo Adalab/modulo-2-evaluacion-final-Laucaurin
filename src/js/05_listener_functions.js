@@ -4,7 +4,7 @@
 function handleSearchBtn(event) {
     event.preventDefault();
     if (searchInput.value === '') {
-        labelMnsError.innerHTML = "*This field is required";
+        labelMnsError.innerHTML = '*This field is required';
         getInfoApi(urlMargarita);
     } else {
         getInfoApi(urlGlobal + searchInput.value);
@@ -13,7 +13,7 @@ function handleSearchBtn(event) {
 }
 
 // Handler function li listener event
-function handleClickList(event) {
+function handleClickListener(event) {
     event.preventDefault();
     const clickedItemId = event.currentTarget.id;
     const objetClicked = dataCocktailList.find(itemDrink => itemDrink.id === clickedItemId);
@@ -25,7 +25,7 @@ function handleClickList(event) {
     }
     setLocalStorage();
     renderList(dataCocktailList);
-    renderFavoriteList()
+    renderFavoriteList();
 }
 
 
@@ -33,33 +33,16 @@ function handleClickList(event) {
 function listenClickList() {
     const cocktailList = document.querySelectorAll('.js__li_element');
     for (const drinkItem of cocktailList) {
-        drinkItem.addEventListener('click', handleClickList);
+        drinkItem.addEventListener('click', handleClickListener);
     }
 }
 
-// Event handler function btn delete fav
-function handleClickDislike(event) {
-    event.preventDefault();
-    const clickedItemId = event.currentTarget.id;
-    const objetClicked = dataCocktailList.find(itemDrink => itemDrink.id === clickedItemId);
-    const favoritesFound = dataCocktailFavList.findIndex(fav => fav.id === clickedItemId);
-    if (favoritesFound === -1) {
-        dataCocktailFavList.push(objetClicked);
-        setLocalStorage();
-        renderList(dataCocktailList);
-        renderFavoriteList();
-    } else {
-        dataCocktailFavList.splice(favoritesFound, 1);
-        setLocalStorage();
-        renderList(dataCocktailList);
-        renderFavoriteList();
-    }
-}
+
 
 // Btn delete favs listner function
 function listenDislikeBtn() {
     const dislikeBtn = document.querySelectorAll('.js-dislike-button');
     for (const dislikeItem of dislikeBtn) {
-        dislikeItem.addEventListener('click', handleClickDislike);
+        dislikeItem.addEventListener('click', handleClickListener);
     }
 }

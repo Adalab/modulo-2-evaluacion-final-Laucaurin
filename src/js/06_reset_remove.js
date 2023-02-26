@@ -7,7 +7,7 @@ function handleResetBtn(event) {
     searchInput.value = '';
     getInfoApi(urlMargarita);
     renderFavoriteList();
-    labelMnsError.innerHTML = "";
+    labelMnsError.innerHTML = '';
 }
 // Handler function to delete all favs
 function handleClickBtnClearAllFav(ev) {
@@ -16,5 +16,4 @@ function handleClickBtnClearAllFav(ev) {
     dataCocktailFavList = [];
     renderFavoriteList();
     renderList(dataCocktailList);
-    // labelMnsError = "";
 }
