@@ -1,0 +1,37 @@
+
+.section__list {
+    max-width: 60vw;
+
+    &_ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 20px;
+    }
+    &_title {
+        margin-bottom: 10px;
+        text-align: center;
+        font-size: 18px;
+    }
+}
+.li__img {
+    width: 150px;
+    border-radius: 10%;
+    padding: 10px;
+}
+.li__element {
+    text-align: center;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin: auto;
+
+}
+
+.li__tittle {
+    margin-top: 8px;
+    font-size: 12px;
+}

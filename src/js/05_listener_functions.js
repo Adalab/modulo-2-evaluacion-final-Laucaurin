@@ -4,10 +4,11 @@
 function handleSearchBtn(event) {
     event.preventDefault();
     if (searchInput.value === '') {
-        labelMnsError.innerHTML = "This field is required";
+        labelMnsError.innerHTML = "*This field is required";
         getInfoApi(urlMargarita);
     } else {
         getInfoApi(urlGlobal + searchInput.value);
+
     }
 }
 

@@ -1,9 +1,10 @@
 @import 'core/reset';
 @import 'core/variables';
 @import 'components/media';
-@import 'layout/main1';
-@import 'layout/header';
 @import 'layout/main';
+@import 'layout/header';
+@import 'layout/main_home';
 @import 'layout/form';
-@import 'layout/sections';
+@import 'layout/section_list';
+@import 'layout/section_fav';
 @import 'layout/footer';

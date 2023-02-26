@@ -1,0 +1,50 @@
+
+.section__fav {
+    width: 90vw;
+
+    @include tablet{
+        width: 30%;
+    }
+}
+
+.section__fav_ul {
+    border-left: solid 2px rgb(3, 12, 3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+
+}
+
+.img__fav {
+    width: 150px;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+///
+.icon__delete {
+    width: 15px;
+    color: rgb(20, 5, 5);
+    justify-self:flex-end;
+}
+
+.selected__fav {
+    border: solid 2px red;
+    border-radius: 10px;
+}
+
+.li__element_fav {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    
+    
+}
+.li__img_fav {
+    border-radius: 50%;
+    height: 100%;
+    margin-right: 10px;
+}
+

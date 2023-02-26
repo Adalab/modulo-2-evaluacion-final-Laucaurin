@@ -16,4 +16,5 @@ function handleClickBtnClearAllFav(ev) {
     dataCocktailFavList = [];
     renderFavoriteList();
     renderList(dataCocktailList);
+    // labelMnsError = "";
 }
