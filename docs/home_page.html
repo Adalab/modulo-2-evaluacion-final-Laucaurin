@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocktail</title>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cookie&family=Montserrat:wght@400;500&family=Yellowtail&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/6885363b9f.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="body">
+    <header class="header">
+        <a href="./index.html" class="header__title">
+            <h1 class="header__title">Cocktail finder</h1>
+        </a>
+    </header>
+
+    <main class="main">
+        <section class="section__list">
+            <h2 class="section__list_title">Search result</h2>
+            <ul class="js__cocktail_list section__list_ul"></ul>
+        </section>
+        <section class="section__fav">
+            <form class="form" action="">
+                <div class="input-container">
+                    <input placeholder="Ej: Margarita" class="input-field js__search_input" type="text">
+                    <label for="input-field" class="input-label">Find your Cocktail</label>
+                    <span class="input-highlight"></span>
+                </div>
+                <label class="error js__label_error"></label>
+                <button class="js__search_button form__btn btn btn__1"><i class="fa-solid fa-magnifying-glass"></i>
+                    Search</button>
+                <div class="section__fav_btn">
+
+                    <button class="js__reset_button form__btn btn btn__2"></i>
+                        Reset</button>
+                    <button class="js__btn_clear_all btn__clearAll btn btn__2">Clear favorites</button>
+                </div>
+            </form>
+
+            <h2 class="section__fav_title">Favorites</h2>
+
+            <ul class=" js__fav_list section__fav_ul"></ul>
+            </div>
+        </section>
+    </main>
+    
+    <script type="text/javascript" src="./assets/js/main.js"></script>
+</body>
+
+</html>
