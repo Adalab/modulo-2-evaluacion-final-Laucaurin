@@ -1,6 +1,6 @@
 'use strict';
 
-// Get Local storage function
+// Get Local storage
 function getLocalStorage() {
     const localStorageFavDrinks = JSON.parse(localStorage.getItem('favorites'));
     if (localStorageFavDrinks) {
@@ -10,8 +10,7 @@ function getLocalStorage() {
 }
 getLocalStorage();
 
-
-// Set Local Storage function
+// Set Local Storage
 function setLocalStorage() {
     localStorage.setItem('favorites', JSON.stringify(dataCocktailFavList));
 }

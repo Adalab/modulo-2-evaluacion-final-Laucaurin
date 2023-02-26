@@ -8,6 +8,8 @@
     align-items: center;
     padding:30px; 
     flex-direction: column-reverse;
+   background-color: #e1e1e1a4;
+
     @include tablet {
         flex-direction: row;
         align-items: flex-start;

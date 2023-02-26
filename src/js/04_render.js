@@ -1,6 +1,6 @@
 'use strict';
 
-//  Render list Fav
+//  Render list Favorites
 function renderFavoriteList() {
     cocktailFavList.innerHTML = '';
     for (const drink of dataCocktailFavList) {
@@ -20,14 +20,12 @@ function renderDrink(drink, classLi, classH3, classImg, classIcon) {
 }
 
 // Render list
-
-// Render list
 function renderList(data) {
     cocktailList.innerHTML = '';
     for (const drink of data) {
         const foundFav = foundFavorite(drink);
         if (foundFav) {
-            cocktailList.innerHTML += renderDrink(drink, 'li__element selected__fav', 'li__title', 'li__img', 'fa-solid fa-heart icon__ike');
+            cocktailList.innerHTML += renderDrink(drink, 'li__element', 'li__title selected__fav', 'li__img', 'fa-solid fa-heart icon__like');
         } else {
             cocktailList.innerHTML += renderDrink(drink, 'li__element', 'li__title', 'li__img');
         }
@@ -37,8 +35,7 @@ function renderList(data) {
     listenDislikeBtn();
 }
 
-
-// Found Fav to render list
+// Find favorites to use in render list
 function foundFavorite(data) {
     const favoriteFound = dataCocktailFavList.find(fav => fav.id === data.id);
     if (favoriteFound === undefined) {

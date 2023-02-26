@@ -14,10 +14,10 @@ function getInfoApi(urlPage) {
         });
 }
 
-// Fetch info default
+// Fetch get info default(Margaritas)
 getInfoApi(urlMargarita);
 
-//Function to check if an empty img arrives and paint it
+// Check if an empty img arrives and paint it
 function emptyImg(data) {
     for (const drink of data) {
         if (drink.image === null) {

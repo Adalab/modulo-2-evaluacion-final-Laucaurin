@@ -1,6 +1,6 @@
 'use strict';
 
-// Fetch info global + handler function btn search
+// Handler function btn search (Fetch info global)
 function handleSearchBtn(event) {
     event.preventDefault();
     if (searchInput.value === '') {
@@ -12,7 +12,7 @@ function handleSearchBtn(event) {
     }
 }
 
-// Handler function li listener event
+// Handler function li listener & disLike button listener
 function handleClickListener(event) {
     event.preventDefault();
     const clickedItemId = event.currentTarget.id;
@@ -28,8 +28,7 @@ function handleClickListener(event) {
     renderFavoriteList();
 }
 
-
-// li listener event function
+// Li listener
 function listenClickList() {
     const cocktailList = document.querySelectorAll('.js__li_element');
     for (const drinkItem of cocktailList) {
@@ -37,12 +36,15 @@ function listenClickList() {
     }
 }
 
-
-
-// Btn delete favs listner function
+// DisLike button listener
 function listenDislikeBtn() {
     const dislikeBtn = document.querySelectorAll('.js-dislike-button');
     for (const dislikeItem of dislikeBtn) {
         dislikeItem.addEventListener('click', handleClickListener);
     }
+}
+
+// Remove label error on input click
+function handleClickInput() {
+    labelMnsError.innerHTML = '';
 }
