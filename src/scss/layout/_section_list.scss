@@ -89,7 +89,10 @@
 
 .li__title{
     font-weight: 500;
-    padding-top: 15px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .selected__fav {
@@ -99,5 +102,5 @@
     border-radius: 5px;
     transition: 2s ;
 
-    height: 50px;
+    height: 60px;
     }
