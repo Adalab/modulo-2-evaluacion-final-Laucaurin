@@ -7,13 +7,16 @@
     position:absolute;
     top: 100px;
     right: 10px;
-    margin-left: 10px;
     background-color: #687d5e5b;
     @include tablet{
-        right: 50px;
+        right: 85px;
         width: 300px;
         margin-bottom: 40px;
+        margin-right: 20px;
     }
+    // @include desktop {
+    //     right: 230px;
+    // }
     &__label {
         text-align: start;
         margin-bottom: 5px;
