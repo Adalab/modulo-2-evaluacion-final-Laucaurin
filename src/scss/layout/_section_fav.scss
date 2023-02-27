@@ -1,28 +1,31 @@
 
 .section__fav {
-    width: 90vw;
+    width: 80vw;
     position: relative;
     bottom: 250px;
+     
     @include tablet{
         width: 30%;
-        margin-right: 30px;
+        margin-right: 20px;
         
     }
 }
 .section__fav_title{
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     font-size: 18px;
     font-weight: 500;
 }
 
 .section__fav_ul {
-    border-left: solid 2px #1f261a;
+    // border-left: solid 1px #1f261a;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding-left: 20px;
+    // padding-left: 10px;
     align-items: flex-start;
-
+@include tablet {
+    // padding-left: 20px;
+}
 }
 
 
@@ -46,11 +49,15 @@
     align-items: center;
     justify-content: space-between;
     height: 60px;
-    width: 300px;
+    width: 245px;
     // background-color: #687d5e;
     border: solid 2px $green-dark;
     border-radius: 5px;
     padding: 3px 15px 3px 5px;
+    @include tablet {
+        width: 300px;
+        // padding-left: 20px;
+    }
 }
 .li__img_fav {
     border-radius: 50%;

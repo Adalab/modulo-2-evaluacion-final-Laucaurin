@@ -4,16 +4,20 @@
     background-size: cover;
     background-repeat: no-repeat;
     height: 350px;
-
+    @include tablet {
+        padding-right: 30px;
+    }
 
     &__title {
         color: #e1e1e1;
             text-decoration: none;
-            font-family: 'Cookie',
-                cursive;
-            font-size: 60px;
-            padding-left: 30px;
+            font-family: 'Cookie', cursive;
+            font-size: 10px;
+            padding: 0 30px;
             font-size: 50px;
+            @include tablet {
+                font-size: 50px;
+            }
     
     }
 

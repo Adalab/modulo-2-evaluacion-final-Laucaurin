@@ -2,10 +2,18 @@
     background: url(../images/7.jpg);
         
         background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            text-align: center;
+
+      @include tablet {
+          background-size: cover;
         background-repeat: no-repeat;
         background-position: right 75%;
         height: 100vh;
       text-align: center;
+      }
       
 
 
