@@ -12,8 +12,15 @@
         width: 30%;
         margin-right: 20px;
         margin-bottom: 0;
+        position: relative;
+        bottom: 350px;
         
     }
+         @include inter {
+             position: relative;
+    
+            bottom: 250px;
+         }
 }
 .section__fav_title{
     margin: 30px;

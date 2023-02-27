@@ -12,12 +12,12 @@
         @include inter {
             position: relative;
 
-                bottom: -120px;
+                bottom: -220px;
         }
          @include desktop {
              max-width: 50vw;
              position: relative;
-             bottom: 110px;
+            bottom: -240px;
              
     
          }
