@@ -23,20 +23,17 @@
     </header>
 
     <main class="main">
-        <section class="section__list">
-            <h2 class="section__list_title">Search result</h2>
-            <ul class="js__cocktail_list section__list_ul"></ul>
-        </section>
         <section class="section__fav">
             <form class="form" action="">
                 <div class="input-container">
-                    <input placeholder="Ej: Margarita" class="input-field js__search_input" type="text">
+                    <input placeholder="Ej: Margarita" class="input-field js__search_input" type="text"
+                        style="color: rgb(222, 220, 220)">
                     <label for="input-field" class="input-label">Find your Cocktail</label>
                     <span class="input-highlight"></span>
                 </div>
                 <label class="error js__label_error"></label>
-                <button class="js__search_button form__btn btn btn__1"><i class="fa-solid fa-magnifying-glass"></i>
-                    Search</button>
+                <button class="js__search_button form__btn btn btn__1">Search <i
+                        class="fa-solid fa-magnifying-glass"></i></button>
                 <div class="section__fav_btn">
 
                     <button class="js__reset_button form__btn btn btn__2"></i>
@@ -48,10 +45,17 @@
             <h2 class="section__fav_title">Favorites</h2>
 
             <ul class=" js__fav_list section__fav_ul"></ul>
-            </div>
         </section>
+        <section class="section__list">
+            <h2 class="section__list_title">Search result</h2>
+            <ul class="js__cocktail_list section__list_ul"></ul>
+        </section>
+        </div>
+
     </main>
-    
+    <footer class="footer">
+        <h2 class="footer__title">Cocktail finder</h2>
+    </footer>
     <script type="text/javascript" src="./assets/js/main.js"></script>
 </body>
 

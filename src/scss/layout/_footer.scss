@@ -1,0 +1,23 @@
+.footer {
+border-top: solid 1px $green-dark;
+background-color: #e7e3b9a4;
+      
+    
+         
+    &__title {
+        color:$green-dark;
+        text-decoration: none;
+        font-family: 'Cookie', cursive;
+        font-size: 20px;
+        padding: 20px;
+        text-align: end;
+        @include tablet {
+              padding-right: 50px;
+        }
+@include desktop {
+             padding-right: 140px;
+         }
+
+    }
+
+}

@@ -1,4 +1,4 @@
-.header {
+.header  {
     background: url(../images/1.jpg);
     background-position: left 40%;
     background-size: cover;
@@ -9,14 +9,13 @@
     }
 
     &__title {
-        color: #e1e1e1;
+        color: #e7e3b9fd;
             text-decoration: none;
             font-family: 'Cookie', cursive;
-            font-size: 10px;
+            font-size: 20px;
             padding: 0 30px;
-            font-size: 50px;
             @include tablet {
-                font-size: 50px;
+                font-size: 40px;
             }
     
     }

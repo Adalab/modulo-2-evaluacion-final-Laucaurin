@@ -1,30 +1,58 @@
 
 .section__list {
+   position: relative;
+   bottom:220px;
     max-width: 50vw;
+    @include tablet {
+        max-width: 50vw;
+        position: relative;
+        bottom: 0;
+       
+    }
+        @include inter {
+            position: relative;
+
+                bottom: 120px;
+        }
+         @include desktop {
+             max-width: 50vw;
+             position: relative;
+             bottom: 110px;
+             
+    
+         }
+   
     &_ul {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
+         display: flex;
+         flex-wrap: wrap;
+         row-gap: 20px;
+@include desktop {
+    display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+      
         // padding: 0 20px;
     }
     &_title {
         
-        padding-bottom: 10px;
+        // padding-bottom: 10px;
         font-size: 18px;
         font-weight: 500;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
         text-align: center;
         // border-bottom: solid 1px $green-dark;
         // width: 130px;
         @include tablet {
             // border-bottom: solid 1px $green-dark;
                 // width: 325px;
-               margin-bottom: 5px;
-               align-self: flex-start;
+               margin:10px 0 0 0 ;
+               text-align: start;
+               margin-left: 40px;
             }
-        @include desktop {
-            margin-bottom: 5px;
-        }
+         @include desktop {
+            
+             margin: 10px 0 0 20px;
+         }
       
         
     }
@@ -52,7 +80,7 @@
  position: relative;
  top: 20px;
  left: 55px;
- font-size: 20px;
+ font-size: 17px;
  color:#e1e1e1;
  background-color:$red;
  padding: 8px;
@@ -67,7 +95,7 @@
 .selected__fav {
     border: solid 2px $green-dark;
     margin: 0 auto;
-    width: 100%;
+    width: 83%;
     border-radius: 5px;
     transition: 2s ;
 

@@ -3,17 +3,26 @@
     width: 80vw;
     position: relative;
     bottom: 250px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
      
     @include tablet{
         width: 30%;
         margin-right: 20px;
+        margin-bottom: 0;
         
     }
 }
 .section__fav_title{
-    margin-bottom: 30px;
+    margin: 30px;
     font-size: 18px;
     font-weight: 500;
+    text-align: center;
+    @include tablet {
+        margin-bottom: 30px;
+    }
 }
 
 .section__fav_ul {
@@ -22,7 +31,8 @@
     flex-direction: column;
     gap: 10px;
     // padding-left: 10px;
-    align-items: flex-start;
+    align-items: center;
+    
 @include tablet {
     // padding-left: 20px;
 }

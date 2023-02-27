@@ -1,124 +1,82 @@
-![Adalab](https://beta.adalab.es/resources/images/adalab-logo-155x61-bg-white.png)
+# Buscador de Cóckteles
 
-# Adalab web starter kit
+El ejercicio consiste en desarrollar una aplicación web que contenga y nos permita buscar entre un listado de las bebidas y cócteles del mundo, así como seleccionar/eleminar seleccion de las bebidas como favoritas y guardarlas en local storage.
 
-Ahoy! Este es nuestro Starter Kit creado en **node y gulp**. ¿Y qué es un Starter kit? Pues es una **plantilla de proyecto con funcionalidades preinstaladas y preconfiguradas**.
+## Especificaciones
 
-Este Kit incluye un motor de plantillas HTML, el preprocesador SASS y un servidor local y muchas cosas más. El Kit nos ayuda a trabajar más cómodamente, nos automatiza tareas.
+---
 
-En el Kit hay 3 tipos de ficheros y carpetas:
+## Búsqueda
 
-- Los ficheros que están sueltos en la raíz del repositorio, como gulpfile.js, package.json... Son la configuración del proyecto y no necesitamos modificarlos.
-- La carpeta `src/`: son los ficheros de nuestra página web, como HTML, CSS, JS...
-- Las carpetas `public/` y `docs/`, que son generadas automáticamente cuando arrancamos el proyecto. El Kit lee los ficheros que hay dentro de `src/`, los procesa y los genera dentro de `public/` y `docs/`.
+1. Al hacer clic sobre el botón de Buscar, la aplicación debe conectarse al API abierto de
+   TheCocktailDB.
+   Algunas de los cócteles que devuelve el API no tienen imagen. En ese caso hay que mostrar una por defecto.
+2. Por cada cóctel contenido en el resultado de la búsqueda se pinta una tarjeta donde
+   mostramos una imagen del cóctel y el nombre.
+3. Algunas de los cócteles que devuelve el API no tienen imagen. En ese caso hay que mostrar una por defecto.
 
-## Guía de inicio rápido
+## Favoritos
 
-> **NOTA:** Necesitas tener instalado [Node JS](https://nodejs.org/) para trabajar con este Starter Kit:
+Una vez aparecen los resultados de búsqueda, la usuaria puede indicar cuáles son nuestros cócteles
+favoritos. Para ello, al hacer clic sobre una cóctel debe pasar lo siguiente
 
-### Pasos a seguir cada vez que queremos arrancar un proyecto desde cero:
+1. El color de fondo y el de fuente se intercambian, indicando que es un cóctel favorito
+2. Hay que mostrar un listado en la parte izquierda de la pantalla, debajo del formulario de búsqueda,
+   con los cócteles favoritos. O
+3. Los cócteles favoritos deben seguir apareciendo a la izquierda aunque la usuaria realice otra
+   búsqueda
 
-1. **Crea tu propio repositorio.**
-1. Descarga este **Starter kit desde GitHub**.
-   - No recomendamos que clones este repo ya que no podrás añadir commits.
-1. **Copia todos los ficheros** de este Starter kit en la carpeta raíz de tu repositorio.
-   - Recuerda que debes copiar **también los ficheros ocultos**.
-   - Si has decidido clonar este repo, no debes copiar la carpeta `.git`. Si lo haces estarás machacando tu propio repositorio.
-1. **Abre una terminal** en la carpeta raíz de tu repositorio.
-1. **Instala las dependencias** locales ejecutando en la terminal el comando:
+## Almacenamiento local
 
-```bash
-npm install
-```
+Hay que almacenar el listado de favoritos en el localStorage. De esta forma, al recargar la página el listado
+de favoritos se debe mostrarse.
 
-### Pasos para arrancar el proyecto:
+## Extras ñadidos al proyecto
 
-Una vez hemos instalado las dependencias, vamos a arrancar el proyecto. **El proyecto hay que arrancarlo cada vez que te pongas a programar.** Para ello ejecuta el comando:
+- [ ] Opción de eliminar los favoritos:
 
-```bash
-npm start
-```
+1. Borarr al hacer clic sobre el icono.
+2. Se elimina la selección del favorito clicado en la lista de resultados
+3. Borrar de localStorage.
 
-Este comando:
+- [ ] Si realizamos una nueva búsqueda y sale un cóctel que ya
+      es favorito, este aparecerá marcado como tal.
+- [ ] Añadido botón de borrar todos los favoritos a la vez, así también como en Local storage.
+- [ ] Al hacer clic en 'seach' sin escribir en el campo, aparece un mensaje de error de texto requerido y al clicar sobre el campo desaparece.
+- [ ] El botón reset elimina lo escrito en el campo y aparecen los resultados por defecto de Margarita.
+- [ ] Maquetacion y diseño de la web.
 
-- **Abre una ventana de Chrome y muestra tu página web**, al igual que hace el plugin de VS Code Live Server (Go live).
-- También **observa** todos los ficheros que hay dentro de la carpeta `src/`, para que cada vez que modifiques un fichero **refresca tu página en Chrome**.
-- También **procesa los ficheros** HTML, SASS / CSS y JS y los **genera y guarda en la carpeta `public/`**. Por ejemplo:
-   - Convierte los ficheros SASS en CSS.
-   - Combina los diferentes ficheros de HTML y los agrupa en uno o varios ficheros HTML.
+## Funcionalidades y herramientas utilizadas en el proyecto
 
-Después de ejecutar `npm start` ya puedes empezar a editar todos los ficheros que están dentro de la carpeta `src/` y programar cómodamente.
+Con el fin de trabajar en el proyecto de una forma organizada, se incorporan a las especificaciones del proyecto:
 
-### Pasos para publicar el proyecto en GitHub Pages:
+- [ ] Uso de control de versiones con ramas.
+- [ ] Usar una estructura adecuada de ficheros y carpetas Scss, Html y Js.
+- [ ] Mixin para botones reutilizables y media queries.
+- [ ] Nesting con sintaxis Sass.
 
-Para generar tu página para producción ejecuta el comando:
+## Construido con
 
-```bash
-npm run docs
-```
+**Construido con 🛠️ **
 
-Y a continuación:
+- HTML
 
-1. Sube a tu repo la carpeta `docs/` que se te acaba de generar.
-1. Entra en la pestaña `settings` de tu repo.
-1. Y en el apartado de GitHub Pages activa la opción **master branch /docs folder**.
-1. Y ya estaría!!!
+- SCSS
 
-Además, los comandos:
+- JAVASCRIPT
 
-```bash
-npm run push-docs
-```
-o
+- BEM structure
 
-```bash
-npm run deploy
-```
+**Herramientas**
 
-son un atajo que nos genera la versión de producción y hace push de la carpeta `docs/` del tirón. Te recomendamos ver el fichero `package.json` para aprender cómo funciona.
+- VSCODE
 
-## Flujo de archivos con Gulp
+- GIT/GITHUB
 
-Estas tareas de Gulp producen el siguiente flujo de archivos:
+- GULP
 
-![Gulp flow](./gulp-flow.png)
+- ADALAB WEB STARTER KIT
 
-## `gulpfile.js` y `config.json`
+## Autor
 
-Nuestro **gulpfile.js** usa el fichero `config.json` de configuración con las rutas de los archivos a generar / observar.
-
-De esta manera separarmos las acciones que están en `gulpfile.js` de la configuración de las acciones que están en `config.json`.
-
-## Estructura de carpetas
-
-La estructura de carpetas tiene esta pinta:
-
-```
-src
- ├─ api // los ficheros de esta carpeta se copian en public/api/
- |  └─ data.json
- ├─ images
- |  └─ logo.jpg
- ├─ js // los ficheros de esta carpeta se concatenan en el fichero main.js y este se guarda en public/main.js
- |  ├─ main.js
- |  └─ events.js
- ├─ scss
- |  ├─ components
- |  ├─ core
- |  ├─ layout
- |  └─ pages
- └─ html
-    └─ partials
-```
-
-> **NOTA:** Los partials de HTML y SASS del proyecto son orientativos. Te recomendamos usar los que quieras, y borrar los que no uses.
-
-## Vídeotutoriales del Starter kit
-
-- [Qué es, trabajar con la versión de desarrollo y rutas relativas](https://www.youtube.com/watch?v=XwvhXvBijos)
-- [Migración de un proyecto, trabajar con la versión de producción y GitHub Pages](https://www.youtube.com/watch?v=qqGClcgt9Uc)
-- [Motor de plantillas](https://www.youtube.com/watch?v=4GwXOJ045Zg)
-
-## Falta algo?
-
-Echas de menos que el kit haga algo en concreto? Pidelo sin problema a través de las issues o si te animas a mejorarlo mándanos un PR :)
+Laura Caurín
