@@ -1,4 +1,4 @@
-# Buscador de Cóckteles
+# Buscador de Cócteles
 
 El ejercicio consiste en desarrollar una aplicación web que contenga y nos permita buscar entre un listado de las bebidas y cócteles del mundo, así como seleccionar/eleminar seleccion de las bebidas como favoritas y guardarlas en local storage.
 
