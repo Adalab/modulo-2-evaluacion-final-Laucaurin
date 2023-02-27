@@ -1,6 +1,6 @@
 .footer {
 border-top: solid 1px $green-dark;
-background-color: #e1e1e1a4;     
+background-color:$primary-color;     
     &__title {
         color:$green-dark;
         text-decoration: none;
@@ -10,8 +10,9 @@ background-color: #e1e1e1a4;
         text-align: end;
         @include tablet {
               padding-right: 50px;
+            font-size: 30px;
         }
-@include desktop {
+        @include desktop {
              padding-right: 140px;
          }
     }

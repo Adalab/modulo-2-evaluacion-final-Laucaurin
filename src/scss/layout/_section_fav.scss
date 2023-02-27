@@ -8,29 +8,29 @@
     width: 30%;
     margin-right: 20px; 
     }
-}
-.section__fav_title{
-    margin: 10px 0 20px 0;
-    font-size: 18px;
-    font-weight: 500;
-    text-align: center;
-}
-.section__fav_ul {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    // padding-left: 10px;
-    align-items: center;
-    margin-bottom: 20px;
+    &_title{
+        margin: 10px 0 20px 0;
+        font-size: 18px;
+        font-weight: 500;
+        text-align: center;
+    }
+    &_ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        // padding-left: 10px;
+        align-items: center;
+        margin-bottom: 20px;
+    }
 }
 .icon__delete {
     width: 15px;
     color: #1f261a;
     transform: scale(1.2);
     transition: .2s linear;
-}
-.icon__delete:hover{
-    transform: scale(1.5);
+    &:hover{
+        transform: scale(1.5);
+    }
 }
 .li__element_fav {
     display: flex;

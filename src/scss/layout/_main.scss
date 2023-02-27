@@ -6,14 +6,10 @@
     height: 100vh;
     text-align: center;
     @include tablet {
-    background-size: cover;
-    background-repeat: no-repeat;
     background-position: right 75%;
-    height: 100vh;
-    text-align: center;
     }     
     &__title {
-        color: #e1e1e1;
+        color: $primary-color;
         margin-bottom: 20px;
         font-family: 'Cookie',cursive;
         font-size: 60px;
@@ -23,7 +19,7 @@
         margin: 0 auto;
         text-decoration: none;
         font-size: 18px;
-        color: #e1e1e1;
+        color: $primary-color;
         font-weight: 500;
         cursor: pointer;
         border: none;
@@ -35,7 +31,7 @@
         transition-property: color;
         &:focus,
         &:hover {
-            color: #fff;
+            color: $primary-color;
             }
         &:focus:after,
         &:hover:after {
@@ -50,7 +46,7 @@
             position: absolute;
             width: 0%;
             height: 2px;
-            background-color: #fff;
+            background-color: $primary-color;
             transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
             transition-duration: 400ms;
             transition-property: width, left;
