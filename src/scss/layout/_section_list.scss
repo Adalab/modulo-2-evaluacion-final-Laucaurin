@@ -12,7 +12,7 @@
     &_title {
         font-size: 18px;
         font-weight: 500;
-        margin: 10px 0 10px 0;
+        margin: 10px 0 20px 0;
         text-align: center;                     
         @include tablet {         
             margin-top:10px;
@@ -39,7 +39,6 @@
     font-size: 14px;
     margin: auto;
 }
-
 .li__title{
     font-weight: 500;
     display: flex;

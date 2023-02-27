@@ -1,5 +1,6 @@
 .footer {
 border-top: solid 1px $green-dark;
+height: 50px;
     &__title {
         color:$green-dark;
         text-decoration: none;
@@ -8,11 +9,11 @@ border-top: solid 1px $green-dark;
         padding: 20px;
         text-align: end;
         @include tablet {
-              padding-right: 50px;
+            padding-right: 50px;
             font-size: 30px;
         }
         @include desktop {
-             padding-right: 140px;
+            padding-right: 140px;
          }
     }
 }
