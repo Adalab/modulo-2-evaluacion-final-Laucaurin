@@ -1,67 +1,34 @@
 
 .section__list {
-   position: relative;
-   bottom:220px;
     max-width: 50vw;
-    @include tablet {
-        max-width: 50vw;
-        position: relative;
-        bottom: -80px;
-       
-    }
-        @include inter {
-            position: relative;
-
-                bottom: -220px;
-        }
-         @include desktop {
-             max-width: 50vw;
-             position: relative;
-            bottom: -240px;
-             
-    
-         }
-   
     &_ul {
-         display: flex;
-         flex-wrap: wrap;
-         row-gap: 20px;
-@include desktop {
-    display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-      
-        // padding: 0 20px;
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 20px;
+        @include desktop {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
     }
     &_title {
-        
-        // padding-bottom: 10px;
         font-size: 18px;
         font-weight: 500;
-        margin-bottom: 10px;
-        text-align: center;
-        // border-bottom: solid 1px $green-dark;
-        // width: 130px;
-        @include tablet {
-            // border-bottom: solid 1px $green-dark;
-                // width: 325px;
-               margin:10px 0 0 0 ;
-               text-align: start;
-               margin-left: 40px;
-            }
-         @include desktop {
-            
-             margin: 10px 0 0 20px;
-         }
-      
-        
+        margin: 10px 0 10px 0;
+        text-align: center;                     
+        @include tablet {         
+            margin:10px 0 0 0 ;
+            text-align: start;
+            margin-left: 40px;
+        }
+        @include desktop {
+            margin: 10px 0 0 20px;
+        }
     }
 }
 .li__img {
     width: 120px;
     border-radius: 2%;
     margin-bottom: 10px;
-    
 }
 .li__element {
     text-align: center;
@@ -72,9 +39,7 @@
     align-items: center;
     font-size: 14px;
     margin: auto;
-
 }
-
 .icon__like {
  order: -1;
  position: relative;
@@ -86,21 +51,17 @@
  padding: 8px;
  border-radius: 50%;
 }
-
 .li__title{
     font-weight: 500;
-    
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .selected__fav {
     border: solid 2px $green-dark;
     margin: 0 auto;
     width: 83%;
     border-radius: 5px;
     transition: 2s ;
-
     height: 60px;
-    }
+}

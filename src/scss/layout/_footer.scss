@@ -1,9 +1,6 @@
 .footer {
 border-top: solid 1px $green-dark;
-background-color: #e1e1e1a4;
-      
-    
-         
+background-color: #e1e1e1a4;     
     &__title {
         color:$green-dark;
         text-decoration: none;
@@ -17,7 +14,5 @@ background-color: #e1e1e1a4;
 @include desktop {
              padding-right: 140px;
          }
-
     }
-
 }

@@ -10,14 +10,12 @@
 
     &__title {
         color: #e1e1e1;
-            text-decoration: none;
-            font-family: 'Cookie', cursive;
-            font-size: 20px;
-            padding: 0 30px;
-            @include tablet {
-                font-size: 40px;
-            }
-    
+        text-decoration: none;
+        font-family: 'Cookie', cursive;
+        font-size: 20px;
+        padding: 0 30px;
+        @include tablet {
+            font-size: 40px;
+        }
     }
-
 }
